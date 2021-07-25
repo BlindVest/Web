@@ -16,8 +16,12 @@ interface Data {
 }
 
 let data: Data
-axios.get('http://18.218.186.235:8080/data')
-  .then(function (res: any) {
+
+axios.get('http://18.218.186.235:8080/data', {
+  headers: {
+    'Content-Type': 'text/html'
+  }
+}).then(function (res: any) {
     data = res
   })
 
