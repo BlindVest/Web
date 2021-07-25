@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
+import axios from 'axios'
 import '../styles/kakaomap.css'
 
 declare global {
@@ -8,6 +9,18 @@ declare global {
   }
 }
 
+interface Data {
+  distance: Number
+  latitude: Number
+  longitude: Number
+}
+
+let data: Data
+axios.get('18.218.186.235/data')
+  .then(function (res: any) {
+    data = res
+  })
+
 const KakaoMap: React.FC = () => {
   const mapStyles = {
     width: '100vw',
@@ -16,13 +29,13 @@ const KakaoMap: React.FC = () => {
   useEffect(() => {
     const container = document.getElementById('map')
     const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      center: new window.kakao.maps.LatLng(data.latitude, data.longitude),
       level: 3
     }
   
     const map = new window.kakao.maps.Map(container, options)
 
-    const markerPosition = new window.kakao.maps.LatLng(33.450701, 126.570667)
+    const markerPosition = new window.kakao.maps.LatLng(data.latitude, data.longitude)
     const marker = new window.kakao.maps.Marker({
       position: markerPosition
     })
