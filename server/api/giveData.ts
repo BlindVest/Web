@@ -10,7 +10,6 @@ const giveData = async (req: Request, res: Response) => {
   })
 
   res.json(data)
-  res.sendStatus(200)
 }
 
 export default giveData

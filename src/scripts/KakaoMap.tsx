@@ -22,8 +22,8 @@ axios.get('http://18.218.186.235:8080/data', {
     'Content-Type': 'text/html'
   }
 }).then(function (res: any) {
-    data = res
-  })
+  data = res
+})
 
 const KakaoMap: React.FC = () => {
   const mapStyles = {
