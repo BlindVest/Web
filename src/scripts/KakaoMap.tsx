@@ -10,13 +10,13 @@ declare global {
 }
 
 interface Data {
-  distance: Number
-  latitude: Number
-  longitude: Number
+  distance: number
+  latitude: number
+  longitude: number
 }
 
 let data: Data
-axios.get('18.218.186.235/data')
+axios.get('http://18.218.186.235:8080/data')
   .then(function (res: any) {
     data = res
   })
