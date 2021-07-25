@@ -8,7 +8,6 @@ const main = async (req: Request, res: Response) => {
 
   const result = await prisma.data.create({
     data: {
-      id: 1,
       distance: distance,
       latitude: latitude,
       longitude: longitude
