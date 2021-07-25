@@ -26,7 +26,8 @@
     "style": "yarn prettier --write .",
     "lint": "yarn run eslint --fix .",
     "de-lint": "yarn run eslint",
-    "migrate": "yarn prisma migrate dev"
+    "migrate": "yarn prisma migrate dev",
+    "server": "ts-node server/index.ts"
   },
   "eslintConfig": {
     "extends": [
