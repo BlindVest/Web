@@ -1,0 +1,15 @@
+.MapView {
+  overflow: hidden;
+}
+
+.kakaomap {
+  position: relative;
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.kakaomap > div {
+  width: 100%;
+  padding-bottom: 0px;
+}
