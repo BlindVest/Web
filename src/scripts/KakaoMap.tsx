@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
 import axios from 'axios'
 import '../styles/kakaomap.css'
+import { response } from 'express'
 
 declare global {
   interface Window {
@@ -9,27 +10,30 @@ declare global {
   }
 }
 
-interface Data {
-  distance: number
-  latitude: number
-  longitude: number
+let data: any = {
+  id: 0,
+  distance: 21,
+  latitude: 37.37055,
+  longitude: 127.1227
 }
 
-let data: Data
-
-axios.get('http://18.218.186.235:8080/data', {
+data = axios.get('http://18.218.186.235:8080/data', {
   headers: {
-    'Content-Type': 'text/html'
+    'Content-Type': 'text/plain'
   }
-}).then(function (res: any) {
-  data = res
 })
+  .then(function (response: any) {
+    return Promise.resolve(response.data)
+  })
+
+console.log(data)
 
 const KakaoMap: React.FC = () => {
   const mapStyles = {
     width: '100vw',
     height: '100vh'
   }
+
   useEffect(() => {
     const container = document.getElementById('map')
     const options = {
