@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from 'react'
+import fetch from 'node-fetch'
 import axios from 'axios'
 import '../styles/kakaomap.css'
-import { response } from 'express'
+import { useState } from 'react'
 
 declare global {
   interface Window {
@@ -10,29 +11,30 @@ declare global {
   }
 }
 
-let data: any = {
-  id: 0,
-  distance: 21,
-  latitude: 37.37055,
-  longitude: 127.1227
-}
-
-data = axios.get('http://18.218.186.235:8080/data', {
-  headers: {
-    'Content-Type': 'text/plain'
-  }
-})
-  .then(function (response: any) {
-    return Promise.resolve(response.data)
-  })
-
-console.log(data)
 
 const KakaoMap: React.FC = () => {
   const mapStyles = {
     width: '100vw',
     height: '100vh'
   }
+
+  const Data =  {
+    id: 0,
+    distance: 0,
+    latitude: 0,
+    longitude: 0
+  }
+  
+  const [data, setData] = useState(Data)
+
+  axios.get('http://18.218.186.235:8080/data', {
+    headers: {
+      'Content-Type': 'text/plain'
+    }
+  })
+    .then((response) => {
+      setData(response.data)
+    })
 
   useEffect(() => {
     const container = document.getElementById('map')
