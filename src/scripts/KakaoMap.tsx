@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react'
-import fetch from 'node-fetch'
 import axios from 'axios'
 import '../styles/kakaomap.css'
 import { useState } from 'react'
@@ -10,7 +9,6 @@ declare global {
     map: any;
   }
 }
-
 
 const KakaoMap: React.FC = () => {
   const mapStyles = {
@@ -24,16 +22,17 @@ const KakaoMap: React.FC = () => {
     latitude: 0,
     longitude: 0
   }
-  
+
   const [data, setData] = useState(Data)
 
-  axios.get('http://18.218.186.235:8080/data', {
+  axios.get('http://18.116.239.41:8080/data', {
     headers: {
       'Content-Type': 'text/plain'
     }
   })
     .then((response) => {
       setData(response.data)
+      console.log(response.data)
     })
 
   useEffect(() => {
