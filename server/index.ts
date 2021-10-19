@@ -5,7 +5,7 @@ import router from './router'
 
 const app: express.Application = express()
 dotenv.config({ path: '../.env' })
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 5000
 const corsOptions: object = {
   origin: '*'
 }
