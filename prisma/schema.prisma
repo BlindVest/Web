@@ -12,4 +12,5 @@ model Data {
   longitude Float
   latitude  Float
   distance  Int
+  shock     String
 }
